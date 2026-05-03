@@ -3,126 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Real-time drone swarm detection, tracking, and visualization system">
-    <title>SkyNet Sentinel — Drone Swarm Detection</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>SENTINEL-4</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <!-- Title Bar -->
-        <header id="title-bar">
-            <div class="title-left">
-                <div class="logo-pulse"></div>
-                <h1>SkyNet Sentinel</h1>
-                <span class="subtitle">Drone Swarm Detection System</span>
-            </div>
-            <div class="title-right">
-                <span id="connection-status" class="status-badge disconnected">DISCONNECTED</span>
-                <span id="clock" class="clock">00:00:00</span>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main id="main-content">
-            <!-- Radar Canvas -->
-            <section id="radar-section">
-                <canvas id="radar" width="800" height="600"></canvas>
-                <div id="radar-overlay">
-                    <span id="radar-label">AIRSPACE MONITOR</span>
-                </div>
-            </section>
-
-            <!-- Side Panel -->
-            <aside id="side-panel">
-                <!-- Controls -->
-                <div class="panel-card" id="controls-card">
-                    <h2 class="panel-title">
-                        <span class="icon">⚙</span> Controls
-                    </h2>
-                    <div class="control-group">
-                        <label for="scenario-select">Scenario</label>
-                        <select id="scenario-select">
-                            <option value="large_swarm">Large Swarm (10+2)</option>
-                            <option value="small_swarm">Small Swarm (3)</option>
-                            <option value="single">Single Drone</option>
-                        </select>
-                    </div>
-                    <button id="toggle-btn" class="btn-primary">
-                        <span id="toggle-icon">⏸</span>
-                        <span id="toggle-text">PAUSE</span>
-                    </button>
-                </div>
-
-                <!-- Stats -->
-                <div class="panel-card" id="stats-card">
-                    <h2 class="panel-title">
-                        <span class="icon">📊</span> Live Statistics
-                    </h2>
-                    <div class="stat-grid">
-                        <div class="stat-item">
-                            <span class="stat-label">Tick</span>
-                            <span class="stat-value" id="stat-tick">—</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Detections</span>
-                            <span class="stat-value" id="stat-detections">—</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Active Tracks</span>
-                            <span class="stat-value" id="stat-tracks">—</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">Confirmed</span>
-                            <span class="stat-value" id="stat-confirmed">—</span>
-                        </div>
-                        <div class="stat-item highlight">
-                            <span class="stat-label">Swarms Detected</span>
-                            <span class="stat-value" id="stat-swarms">—</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Swarm Details -->
-                <div class="panel-card" id="swarm-card">
-                    <h2 class="panel-title">
-                        <span class="icon">🎯</span> Swarm Intelligence
-                    </h2>
-                    <div id="swarm-details">
-                        <p class="no-data">No swarms detected</p>
-                    </div>
-                </div>
-
-                <!-- Legend -->
-                <div class="panel-card" id="legend-card">
-                    <h2 class="panel-title">
-                        <span class="icon">🗺</span> Legend
-                    </h2>
-                    <div class="legend-items">
-                        <div class="legend-item">
-                            <span class="legend-dot confirmed"></span>
-                            Confirmed Track
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot tentative"></span>
-                            Tentative Track
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot prediction"></span>
-                            Predicted Path
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-dot swarm-hull"></span>
-                            Swarm Boundary
-                        </div>
-                    </div>
-                </div>
-            </aside>
-        </main>
+<div id="crt"></div>
+<div id="vignette"></div>
+<canvas id="grain"></canvas>
+<div id="screen">
+    <div id="main">
+        <div id="scope"><canvas id="radar"></canvas></div>
+        <div id="data"><pre id="readout"></pre></div>
     </div>
-
-    <script src="main.js"></script>
+    <div id="bar">
+        <select id="scn"><option value="large_swarm">SCN:LRG_SWM</option><option value="small_swarm">SCN:SML_SWM</option><option value="single">SCN:SINGLE</option></select>
+        <span id="mode">MODE:RUN</span>
+        <span id="tickd">TICK:----</span>
+        <span id="clock">00:00:00</span>
+        <span id="conn">● OFFLINE</span>
+    </div>
+</div>
+<script src="main.js"></script>
 </body>
 </html>
